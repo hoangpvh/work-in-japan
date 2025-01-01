@@ -1,101 +1,122 @@
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import JobCard from '@/components/JobCard'
+import { fetchFeaturedJobs } from '@/lib/api'
+import type { Job } from '@/types/job'
 
-export default function Home() {
+export default async function Home() {
+  const featuredJobs: Job[] = await fetchFeaturedJobs()
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div>
+      {/* Hero Section */}
+      <section className="relative h-[500px]">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/images/japan-banner.webp"
+          alt="Japan Banner"
+          fill
+          className="object-cover"
           priority
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{' '}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <div className="text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Cơ Hội Việc Làm Tại Nhật Bản
+            </h1>
+            <p className="text-xl mb-8">
+              Khám phá các cơ hội việc làm hấp dẫn với mức lương cao
+            </p>
+            <Button size="lg">
+              Tìm Hiểu Ngay
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Lợi Ích Khi Đi Nhật
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Benefit Card 1 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Mức Lương Hấp Dẫn</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Thu nhập cao từ 25-35 triệu đồng/tháng trở lên tùy ngành nghề.</p>
+              </CardContent>
+            </Card>
+
+            {/* Benefit Card 2 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Chế Độ Đãi Ngộ</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Hưởng đầy đủ bảo hiểm, lương thưởng, và các phúc lợi hấp dẫn.</p>
+              </CardContent>
+            </Card>
+
+            {/* Benefit Card 3 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Môi Trường Làm Việc</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Môi trường làm việc chuyên nghiệp, sáng tạo, và thân thiện.</p>
+              </CardContent>
+            </Card>
+
+            {/* Benefit Card 4 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Phát Triển Nghề Nghiệp</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Cơ hội thăng tiến, đào tạo nâng cao kỹ năng nghề nghiệp.</p>
+              </CardContent>
+            </Card>
+
+            {/* Benefit Card 5 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Hỗ Trợ Chi Phí</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Hỗ trợ chi phí đi lại, ăn uống, và nơi ở nếu cần thiết.</p>
+              </CardContent>
+            </Card>
+
+            {/* Benefit Card 6 */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Thời Gian Linh Hoạt</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Các công việc có thời gian làm việc linh hoạt, phù hợp với nhu cầu cá nhân.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Jobs Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Đơn Hàng Nổi Bật
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredJobs.map((job: Job) => (
+              <JobCard key={job.id} job={job} />
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
