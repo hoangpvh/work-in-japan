@@ -1,7 +1,9 @@
 // app/news/page.tsx
+import { Clock, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { fetchNews } from '@/lib/api'
+
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import {
@@ -11,8 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Button } from '@/components/ui/button'
-import { Clock, User } from 'lucide-react'
+import { fetchNews } from '@/lib/api'
 import type { News } from '@/types/news'
 
 export default async function NewsPage() {
@@ -24,10 +25,7 @@ export default async function NewsPage() {
 
       {/* Filters */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
-        <Input 
-          placeholder="Tìm kiếm tin tức..." 
-          className="md:w-80"
-        />
+        <Input placeholder="Tìm kiếm tin tức..." className="md:w-80" />
         <Select>
           <SelectTrigger className="md:w-48">
             <SelectValue placeholder="Danh mục" />
@@ -60,16 +58,17 @@ export default async function NewsPage() {
                   {article.category}
                 </div>
                 <h2 className="text-2xl font-bold mb-4">
-                  <Link href={`/news/${article.id}`} className="hover:text-blue-600">
+                  <Link
+                    href={`/news/${article.id}`}
+                    className="hover:text-blue-600"
+                  >
                     {article.title}
                   </Link>
                 </h2>
-                <p className="text-gray-600 mb-4">
-                  {article.excerpt}
-                </p>
+                <p className="text-gray-600 mb-4">{article.excerpt}</p>
                 <div className="flex items-center space-x-4 text-sm text-gray-600 mb-4">
                   <div className="flex items-center">
-                    <User  className="w-4 h-4 mr-1" />
+                    <User className="w-4 h-4 mr-1" />
                     {article.author}
                   </div>
                   <div className="flex items-center">
@@ -101,16 +100,17 @@ export default async function NewsPage() {
                 {article.category}
               </div>
               <h3 className="font-bold mb-2">
-                <Link href={`/news/${article.id}`} className="hover:text-blue-600">
+                <Link
+                  href={`/news/${article.id}`}
+                  className="hover:text-blue-600"
+                >
                   {article.title}
                 </Link>
               </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                {article.excerpt}
-              </p>
+              <p className="text-gray-600 text-sm mb-4">{article.excerpt}</p>
               <div className="flex items-center justify-between text-sm text-gray-600">
                 <div className="flex items-center">
-                  <User  className="w-4 h-4 mr-1" />
+                  <User className="w-4 h-4 mr-1" />
                   {article.author}
                 </div>
                 <div className="flex items-center">

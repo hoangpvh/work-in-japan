@@ -1,6 +1,6 @@
 // components/Header.tsx
-import Link from 'next/link'
 import { Search } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
         <Link href="/" className="font-bold text-xl">
           Logo
         </Link>
-        
+
         <div className="hidden md:flex items-center space-x-8">
           <Link href="/jobs" className="hover:text-blue-600">
             Đơn Hàng

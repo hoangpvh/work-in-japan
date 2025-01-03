@@ -1,16 +1,17 @@
 'use client'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useTransition } from 'react'
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
-import { useRouter, useSearchParams } from 'next/navigation'
-import { useTransition } from 'react'
+import { Label } from '@/components/ui/label'
 
 type FilterOption = {
   id: string
@@ -41,11 +42,11 @@ export default function JobFilters() {
   const updateFilter = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
     const currentValues = params.getAll(key)
-    
+
     if (currentValues.includes(value)) {
-      const newValues = currentValues.filter(v => v !== value)
+      const newValues = currentValues.filter((v) => v !== value)
       params.delete(key)
-      newValues.forEach(v => params.append(key, v))
+      newValues.forEach((v) => params.append(key, v))
     } else {
       params.append(key, value)
     }
@@ -60,27 +61,28 @@ export default function JobFilters() {
     return values.includes(value)
   }
 
-  const FilterGroup = ({ title, options, paramKey }: { 
+  const FilterGroup = ({
+    title,
+    options,
+    paramKey,
+  }: {
     title: string
     options: FilterOption[]
-    paramKey: string 
+    paramKey: string
   }) => (
     <AccordionItem value={paramKey}>
       <AccordionTrigger>{title}</AccordionTrigger>
       <AccordionContent>
         <div className="space-y-2">
-          {options.map(option => (
+          {options.map((option) => (
             <div key={option.id} className="flex items-center space-x-2">
-              <Checkbox 
+              <Checkbox
                 id={option.id}
                 checked={isChecked(paramKey, option.value)}
                 onCheckedChange={() => updateFilter(paramKey, option.value)}
                 disabled={isPending}
               />
-              <Label 
-                htmlFor={option.id}
-                className="cursor-pointer"
-              >
+              <Label htmlFor={option.id} className="cursor-pointer">
                 {option.label}
               </Label>
             </div>
@@ -97,17 +99,17 @@ export default function JobFilters() {
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible className="space-y-2">
-          <FilterGroup 
+          <FilterGroup
             title="Ngành nghề"
             options={JOB_TYPES}
             paramKey="jobType"
           />
-          <FilterGroup 
+          <FilterGroup
             title="Địa điểm"
             options={LOCATIONS}
             paramKey="location"
           />
-          <FilterGroup 
+          <FilterGroup
             title="Mức lương"
             options={SALARY_RANGES}
             paramKey="salary"

@@ -1,16 +1,17 @@
 // app/contact/page.tsx
+import {
+  Clock,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Phone as PhoneIcon,
+} from 'lucide-react'
+
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent } from '@/components/ui/card'
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock,
-  MessageCircle,
-  Phone as PhoneIcon
-} from 'lucide-react'
 
 export default function ContactPage() {
   return (
@@ -23,7 +24,7 @@ export default function ContactPage() {
           <Card>
             <CardContent className="p-6">
               <h2 className="font-semibold text-lg mb-4">Thông tin liên hệ</h2>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Phone className="w-5 h-5 mt-1 mr-3" />
@@ -39,7 +40,10 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5 mt-1 mr-3" />
                   <div>
                     <div className="font-medium">Email</div>
-                    <a href="mailto:contact@example.com" className="text-blue-600">
+                    <a
+                      href="mailto:contact@example.com"
+                      className="text-blue-600"
+                    >
                       contact@example.com
                     </a>
                   </div>
@@ -68,7 +72,7 @@ export default function ContactPage() {
           <Card>
             <CardContent className="p-6">
               <h2 className="font-semibold text-lg mb-4">Hỗ trợ trực tuyến</h2>
-              
+
               <div className="space-y-4">
                 <Button className="w-full flex items-center" variant="outline">
                   <MessageCircle className="w-5 h-5 mr-2" />
@@ -88,15 +92,17 @@ export default function ContactPage() {
         <div className="md:col-span-2">
           <Card>
             <CardContent className="p-6">
-              <h2 className="font-semibold text-lg mb-6">Gửi tin nhắn cho chúng tôi</h2>
-              
+              <h2 className="font-semibold text-lg mb-6">
+                Gửi tin nhắn cho chúng tôi
+              </h2>
+
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name">Họ và tên</label>
                     <Input id="name" required />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <label htmlFor="email">Email</label>
                     <Input id="email" type="email" required />

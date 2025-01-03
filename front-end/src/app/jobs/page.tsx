@@ -1,9 +1,10 @@
-import { Suspense } from 'react'
-import { fetchJobs } from '@/lib/api'
-import JobCard from '@/components/JobCard'
-import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
+import { Suspense } from 'react'
+
+import JobCard from '@/components/JobCard'
 import JobFilters from '@/components/JobFilters'
+import { Input } from '@/components/ui/input'
+import { fetchJobs } from '@/lib/api'
 import type { Job } from '@/types/job'
 
 // Change interface to type with index signature

@@ -1,7 +1,8 @@
+import { JapaneseYen, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { MapPin, JapaneseYen } from 'lucide-react'
 
 interface Job {
   id: number
@@ -63,13 +64,9 @@ export default function JobCard({ job }: JobCardProps) {
               {job.company.name.charAt(0)}
             </span>
           </div>
-          <span className="text-sm text-gray-600">
-            {job.company.name}
-          </span>
+          <span className="text-sm text-gray-600">{job.company.name}</span>
         </div>
-        <h3 className="text-lg font-semibold mb-2">
-          {job.title}
-        </h3>
+        <h3 className="text-lg font-semibold mb-2">{job.title}</h3>
         <div className="flex items-center space-x-4 text-sm text-gray-600">
           <div className="flex items-center">
             <JapaneseYen className="w-4 h-4 mr-1" />
@@ -82,7 +79,7 @@ export default function JobCard({ job }: JobCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Link 
+        <Link
           href={`/jobs/${job.documentId}`}
           className="text-blue-600 hover:text-blue-800 font-medium"
         >

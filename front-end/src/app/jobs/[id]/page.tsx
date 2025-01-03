@@ -1,8 +1,9 @@
 // app/jobs/[id]/page.tsx
+import { Building, Calendar, JapaneseYen, MapPin, Users } from 'lucide-react'
 import Image from 'next/image'
+
 import { Button } from '@/components/ui/button'
 import { fetchJob } from '@/lib/api'
-import { MapPin, JapaneseYen, Calendar, Users, Building } from 'lucide-react'
 
 export default async function JobDetailPage() {
   // { params }: { params: { id: string } }
@@ -15,7 +16,7 @@ export default async function JobDetailPage() {
         <div className="md:col-span-2">
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
             {/* <h1 className="text-3xl font-bold mb-4">{attributes.title}</h1> */}
-            
+
             <div className="flex flex-wrap gap-4 mb-6">
               <div className="flex items-center">
                 <JapaneseYen className="w-5 h-5 mr-2" />
@@ -34,10 +35,10 @@ export default async function JobDetailPage() {
             <div className="prose max-w-none">
               <h2>Mô tả công việc</h2>
               {/* <div dangerouslySetInnerHTML={{ __html: attributes.description }} /> */}
-              
+
               <h2>Yêu cầu</h2>
               {/* <div dangerouslySetInnerHTML={{ __html: attributes.requirements }} /> */}
-              
+
               <h2>Quyền lợi</h2>
               {/* <div dangerouslySetInnerHTML={{ __html: attributes.benefits }} /> */}
             </div>
